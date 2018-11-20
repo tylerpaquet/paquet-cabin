@@ -14,6 +14,10 @@ import { AuthService } from './core/services/auth.service';
 import { UserService } from './core/services/user.service';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FirebaseService } from './core/services/firebase.service';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
 
 import { AppComponent } from './app.component';
 
@@ -30,6 +34,10 @@ import { AppComponent } from './app.component';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule, // imports firebase/firestore, only needed for database features
     AngularFireAuthModule, // imports firebase/auth, only needed for auth features
+    BrowserAnimationsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule
   ],
   providers: [AuthService, UserService, UserResolver, AuthGuard,FirebaseService],
   bootstrap: [AppComponent]

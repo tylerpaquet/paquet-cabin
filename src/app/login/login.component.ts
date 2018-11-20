@@ -1,16 +1,16 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../core/services/auth.service'
 import { Router, Params } from '@angular/router';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormControl, Validators, FormGroup, FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'page-login',
   templateUrl: 'login.component.html',
   styleUrls: ['login.scss']
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit{
 
-  loginForm: FormGroup;
+  login: FormGroup;
   errorMessage: string = '';
 
   constructor(
@@ -18,13 +18,12 @@ export class LoginComponent {
     private router: Router,
     private fb: FormBuilder
   ) {
-    this.createForm();
   }
 
-  createForm() {
-    this.loginForm = this.fb.group({
-      email: ['', Validators.required ],
-      password: ['',Validators.required]
+  ngOnInit(){
+    this.login = this.fb.group({
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required]]
     });
   }
 
@@ -32,6 +31,7 @@ export class LoginComponent {
     this.authService.doLogin(value)
     .then(res => {
       this.router.navigate(['/home']);
+      this.errorMessage = '';
     }, err => {
       console.log(err);
       this.errorMessage = err.message;
