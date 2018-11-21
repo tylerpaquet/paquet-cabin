@@ -4,7 +4,7 @@
       <div>
         <div>
           <form [formGroup]="login" class="form-wrapper">
-            <mat-form-field>
+            <mat-form-field class="form-field">
               <input matInput placeholder="Email" formControlName="email">
               <!-- <mat-error *ngIf="loginForm.get('email').hasError('required')">
                 Email is <strong>required</strong>
@@ -13,21 +13,21 @@
                 Email is <strong>required</strong>
               </mat-error>
               <mat-error *ngIf="login.get('email').hasError('email') && !login.get('email').hasError('required')">
-                  That is not a valid email
+                  That is not a valid emaillogin.get('email').hasError('required')
                 </mat-error>
             </mat-form-field>
     
-            <mat-form-field>
+            <mat-form-field class="form-field">
               <input matInput placeholder="Password" type="password" formControlName="password">
               <mat-error *ngIf="login.get('password').hasError('required')">
                 Password is <strong>required</strong>
               </mat-error>
             </mat-form-field>
     
-            <button mat-raised-button type="submit" (click)="tryLogin(login.value)">Login</button>
+            <button mat-raised-button class="login-button" type="submit" (click)="tryLogin(login.value)">Login</button>
 
-            <div *ngIf="errorMessage == 'The password is invalid or the user does not have a password.'">
-              {{errorMessage}}
+            <div *ngIf="errorCode != ''">
+              Incorrect Username or Password
             </div>
           </form>
         </div>

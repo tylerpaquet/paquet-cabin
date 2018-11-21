@@ -12,6 +12,7 @@ export class LoginComponent implements OnInit{
 
   login: FormGroup;
   errorMessage: string = '';
+  errorCode: string = '';
 
   constructor(
     public authService: AuthService,
@@ -35,6 +36,7 @@ export class LoginComponent implements OnInit{
     }, err => {
       console.log(err);
       this.errorMessage = err.message;
+      this.errorCode = err.code;
     })
   }
 }
