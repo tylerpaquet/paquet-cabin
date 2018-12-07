@@ -6,17 +6,23 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: flex-end;
   height: 100%;
   // background-image: url('../../assets/images/wall.jpg');
   // background-repeat: no-repeat;
   // background-position: center;
-  background-color: rgb(94, 201, 99);
+  background-image: url(../../assets/images/login.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .form-wrapper {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
+  margin-bottom: 75px;
 }
 .form-field {
   margin-bottom: 1em;
