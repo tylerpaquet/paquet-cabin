@@ -1,18 +1,25 @@
-<div>
-  Welcome: {{user.email}}
-</div>
-<div>
-  UID: {{user.uid}}
-</div>
-<div>
-  First Name: {{user.firstName}}
-</div>
-<div>
-  Last Name: {{user.lastName}}
-</div>
-<div>
-  Display Name: {{user.displayName}}
-</div>
-<div>
-  <button type="button" (click)="logout()">Logout</button>
+<mat-toolbar class="container-row toolbar">
+  <div class="container-row header-item">
+      <div class="header-item">
+          <button mat-button type="button" (click)="goHome()">Home</button>
+      </div>  
+    <div class="header-item">
+          <button mat-button type="button" (click)="showDiscussions()">Discussions</button>
+      </div>
+  </div>
+  <div class="greeting-logout container-row header-item">
+      <div class="header-item">
+          Welcome: {{user.firstName}}
+      </div>
+      <div class="header-item">
+          <button mat-button type="button" (click)="logout()">Logout</button>
+      </div>
+  </div>
+</mat-toolbar>
+
+<div class="homepage-wrapper">
+  <div *ngIf="home">
+    <p>Welcome Home!</p>
+  </div>
+  <discussions *ngIf="discussions" [user]="user"></discussions>
 </div>

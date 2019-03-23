@@ -1,0 +1,21 @@
+<div>
+    <button mat-button type="button" (click)="addTopic()">Add Topic</button>
+</div>
+
+<form [formGroup]="newTopic" *ngIf="showAddTopicForm">
+    <mat-form-field class="margin">
+      <input matInput placeholder="Topic Name:" formControlName="name">
+    </mat-form-field>
+
+    <button mat-raised-button class="margin" type="button" (click)="saveTopic(newTopic.value)">Submit</button>
+    <button mat-raised-button class="margin" type="button" (click)="cancel()">Cancel</button>
+  </form>
+
+<mat-expansion-panel *ngFor="let topic of discussionTopics">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+          {{ topic.name }}
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <p>This is some data</p>
+  </mat-expansion-panel>

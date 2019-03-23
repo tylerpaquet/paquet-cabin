@@ -21,7 +21,6 @@ export class UserResolver implements Resolve<FirebaseUserModel> {
           user.email = res.email;
           user.uid = res.uid;
           this.fireBaseService.getUser(res.uid).subscribe((x: FirebaseUserModel) => {
-            console.log(x);
             user.firstName = x.firstName;
             user.lastName = x.lastName;
             user.displayName = x.displayName;

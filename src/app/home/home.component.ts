@@ -16,6 +16,16 @@ export class HomeComponent implements OnInit{
 
   user: FirebaseUserModel = new FirebaseUserModel();
   profileForm: FormGroup;
+  private _discussions: boolean;
+  private _home: boolean;
+
+  get home(): boolean {
+    return this._home;
+  }
+
+  get discussions(): boolean {
+    return this._discussions;
+  }
 
   constructor(
     public userService: UserService,
@@ -31,9 +41,10 @@ export class HomeComponent implements OnInit{
       let data = routeData['data'];
       if (data) {
         this.user = data;
-        console.log(this.user);
       }
-    })
+    });
+
+    this._home = true;
   }
 
   logout(){
@@ -43,5 +54,15 @@ export class HomeComponent implements OnInit{
     }, (error) => {
       console.log("Logout error", error);
     });
+  }
+
+  public goHome(): void{
+    this._home = true;
+    this._discussions = false;
+  }
+  
+  public showDiscussions(): void{
+    this._discussions = true;
+    this._home = false;
   }
 }
